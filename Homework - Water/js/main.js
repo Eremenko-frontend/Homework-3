@@ -3,15 +3,21 @@
 
 function whatValueWater (rockHeight) {
 
-  //Розрахунок правої частини масиву
+  //Calculation of the right side of the array
+  
+  function rising_shore() {
+    
+    while (rockHeight[0] < rockHeight[1]) {
 
-  while (rockHeight[0] < rockHeight[1]) {
+      rockHeight.splice(0, 1);
 
-    rockHeight.splice(0, 1);
+    }
+    
+  };
 
-  }
+  rising_shore();
 
-  /* Розрахунок лівої частини масиву */
+  /* Calculation of the left part of the array */
 
   var rockLength = rockHeight.length;
 
@@ -23,14 +29,20 @@ function whatValueWater (rockHeight) {
 
   }
 
-  //Розрахунок при рівності елементів масиву
+  //Calculation of the equality of elements of an array
+  
+  function smooth_shore () {
+    
+    while (rockHeight[0] === rockHeight[1]) {
 
-  while (rockHeight[0] === rockHeight[1]) {
+      rockHeight.splice(0, 1);
 
-    rockHeight.splice(0, 1);
-
-  }
-
+    }
+    
+  };
+  
+  smooth_shore();
+  
   var waterHeight = [];
 
   var valueWater = 0;
@@ -38,25 +50,20 @@ function whatValueWater (rockHeight) {
   function mathOper () {
 
     var n =0;
+    
     var u = 0;
+    
     var zeroMassiv = [];
 
-    //Розрахунок при рівності елементів масиву
+    //Calculation of the equality of elements of an array
 
-    while (rockHeight[0] == rockHeight[1]) {
+    smooth_shore();
 
-      rockHeight.splice(0, 1);
-    }
+    //Calculation if the first element is less than the other
 
-    //Розрахунок  якщо перший елемент меньше другого
+    rising_shore();
 
-    while (rockHeight[0] < rockHeight[1]) {
-
-      rockHeight.splice(0, 1);
-
-    }
-
-    /* Стандартний перепад озера */
+    /* Standard lake breakdown */
 
     var e = 0;
     var i = 0;
@@ -64,7 +71,7 @@ function whatValueWater (rockHeight) {
 
     var nextElement;
 
-    var j = 2;//даний індекс використовується для отримання наступного по номеру елементу після того як умова перестає виконуватись
+    var j = 2;//This index is used to get the next item number after the condition ceases to be fulfilled
 
     var t;
 
@@ -74,7 +81,7 @@ function whatValueWater (rockHeight) {
 
       nextElement = rockHeight[j];
 
-      if (nextElement == undefined) {
+      if (!(nextElement)) {
 
         nextElement = rockHeight[e];
 
@@ -150,26 +157,20 @@ function whatValueWater (rockHeight) {
 
   }
 
-  console.log('Кількість води в озерах:' + answerSum);
+  console.log('Number of water in lakes:' + answerSum);
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 whatValueWater([2, 5, 1, 3, 1, 2, 1, 7, 7, 6]);
+
 whatValueWater([2, 1, 5, 0, 3, 4, 7, 2, 3, 1, 0]);
+
 whatValueWater([7, 0, 1, 3, 4, 1, 2, 1]);
+
 whatValueWater([2, 1, 5, 0, 3, 4, 7, 2, 3, 1, 0]);
+
 whatValueWater([2, 2, 1, 2, 2, 3, 0, 1, 2] );
+
 whatValueWater([2, 1, 5, 0, 3, 4, 7, 2, 3, 1, 8]);
+
 whatValueWater([2, 2, 2, 2, 2]);
