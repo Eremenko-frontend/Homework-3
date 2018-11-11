@@ -6,11 +6,9 @@ function whatValueWater (rockHeight) {
   //Calculation of the right side of the array
   
   function rising_shore() {
-    
+
     while (rockHeight[0] < rockHeight[1]) {
-
       rockHeight.splice(0, 1);
-
     }
     
   };
@@ -22,9 +20,7 @@ function whatValueWater (rockHeight) {
   var rockLength = rockHeight.length;
 
   while (rockHeight[rockHeight.length - 1] < rockHeight[rockHeight.length - 2]) {
-
     var numberLostElement = rockHeight.length - 1;
-
     rockHeight.splice(numberLostElement, 1);
 
   }
@@ -34,9 +30,7 @@ function whatValueWater (rockHeight) {
   function smooth_shore () {
     
     while (rockHeight[0] === rockHeight[1]) {
-
       rockHeight.splice(0, 1);
-
     }
     
   };
@@ -44,15 +38,11 @@ function whatValueWater (rockHeight) {
   smooth_shore();
   
   var waterHeight = [];
-
   var valueWater = 0;
 
   function mathOper () {
-
     var n =0;
-    
     var u = 0;
-    
     var zeroMassiv = [];
 
     //Calculation of the equality of elements of an array
@@ -68,27 +58,19 @@ function whatValueWater (rockHeight) {
     var e = 0;
     var i = 0;
     var firstElement;
-
     var nextElement;
-
     var j = 2;//This index is used to get the next item number after the condition ceases to be fulfilled
-
     var t;
 
     while (rockHeight[0] > rockHeight[e + 1]) {
-
       firstElement = rockHeight[0];
-
       nextElement = rockHeight[j];
 
       if (!(nextElement)) {
-
         nextElement = rockHeight[e];
-
       }
 
       j++;
-
       e++;
 
     }
@@ -96,53 +78,39 @@ function whatValueWater (rockHeight) {
     if (firstElement > nextElement) {
 
       while (rockHeight[rockHeight.length] > rockHeight[t - 1]) {
-
         t = rockHeight.length;
-
         valueWater = 0 + (rockHeight[rockHeight.length - 1] - rockHeight[i - 2]);
 
         if (valueWater < 0) {
-
           valueWater = 0;
-
         }
 
         waterHeight.push(valueWater);
-
         t--;
-
         zeroMassiv.push(u++);
 
       }
 
       var p = zeroMassiv.length + 1;
-
       rockHeight.splice(-1, p);
 
     } else {
 
       while (rockHeight[0] > rockHeight[n + 1]) {
-
         valueWater = 0 + (rockHeight[0] - rockHeight[n + 1]);
-
         waterHeight.push(valueWater);
-
         n++;
-
         zeroMassiv.push(u++);
 
       }
 
       var p = zeroMassiv.length + 1;
-
       rockHeight.splice(0, p);
 
     }
 
     if (rockHeight.length > 1) {
-
       mathOper ();
-
     }
 
   }
@@ -152,9 +120,7 @@ function whatValueWater (rockHeight) {
   var answerSum = 0;
 
   for (var i = 0; waterHeight.length > i; i++) {
-
     answerSum = answerSum + waterHeight[i];
-
   }
 
   console.log('Number of water in lakes:' + answerSum);
